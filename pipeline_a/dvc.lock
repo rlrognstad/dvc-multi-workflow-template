@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  stage_1:
+    cmd: python3 ../src/stage_1.py --config=../config.yaml
+    deps:
+    - path: ../src/logs.py
+      hash: md5
+      md5: 488b445760eec5a975b2ea2ac66d9eb2
+      size: 1170
+    outs:
+    - path: ../output/stage1_output.txt
+      hash: md5
+      md5: ba6ff744ff89937f7e3f1963162fbe04
+      size: 47

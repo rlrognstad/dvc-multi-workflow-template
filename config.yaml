@@ -1,0 +1,20 @@
+base:
+  log_level: DEBUG
+  random_state: 121
+  config: config.yaml
+
+stage-1:
+  text: "Stage 1 config"
+  output_filename: ../output/stage1_output.txt
+
+stage-2a:
+  text: "Stage 2a config"
+  output_filename: ../output/stage2_output.txt
+
+stage-2b:
+  text: "Stage 2b config"
+  output_filename: ../output/stage2_output.txt
+
+stage-3:
+  text: "Stage 3 config"
+  output_filename: ../output/stage3_output.txt
