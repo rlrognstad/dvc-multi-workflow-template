@@ -9,11 +9,11 @@ stage-1:
 
 stage-2a:
   text: "Stage 2a config"
-  output_filename: ../output/stage2_output.txt
+  output_filename: ../output/stage2a_output.txt
 
 stage-2b:
   text: "Stage 2b config"
-  output_filename: ../output/stage2_output.txt
+  output_filename: ../output/stage2b_output.txt
 
 stage-3:
   text: "Stage 3 config"

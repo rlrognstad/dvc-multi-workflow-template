@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  stage_2b:
+    cmd: python3 ../src/stage_2b.py --config=../config.yaml
+    deps:
+    - path: ../output/stage1_output.txt
+      hash: md5
+      md5: d7f1dcb600489ba411d28be8b8b71010
+      size: 47
+    - path: ../output/stage2a_output.txt
+      hash: md5
+      md5: fd9d6e5338e589160055f000642704d4
+      size: 96
+    - path: ../src/logs.py
+      hash: md5
+      md5: 488b445760eec5a975b2ea2ac66d9eb2
+      size: 1170
+    params:
+      ../config.yaml:
+        base:
+          log_level: DEBUG
+          random_state: 121
+          config: config.yaml
+        stage-1:
+          text: Stage 1 config
+          output_filename: ../output/stage1_output.txt
+        stage-2b:
+          text: Stage 2b config
+          output_filename: ../output/stage2b_output.txt
+    outs:
+    - path: ../output/stage2b_output.txt
+      hash: md5
+      md5: 945b9b886275c4610456db3e0e31e313
+      size: 146
+  stage_3:
+    cmd: python3 ../src/stage_3.py --config=../config.yaml
+    deps:
+    - path: ../output/stage1_output.txt
+      hash: md5
+      md5: d7f1dcb600489ba411d28be8b8b71010
+      size: 47
+    - path: ../output/stage2b_output.txt
+      hash: md5
+      md5: 945b9b886275c4610456db3e0e31e313
+      size: 146
+    - path: ../src/logs.py
+      hash: md5
+      md5: 488b445760eec5a975b2ea2ac66d9eb2
+      size: 1170
+    params:
+      ../config.yaml:
+        base:
+          log_level: DEBUG
+          random_state: 121
+          config: config.yaml
+        stage-2b:
+          text: Stage 2b config
+          output_filename: ../output/stage2b_output.txt
+        stage-3:
+          text: Stage 3 config
+          output_filename: ../output/stage3_output.txt
+    outs:
+    - path: ../output/stage3_output.txt
+      hash: md5
+      md5: dda7971339418d0dea2e20bfa9607d1a
+      size: 197

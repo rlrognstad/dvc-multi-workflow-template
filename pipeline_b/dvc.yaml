@@ -1,0 +1,32 @@
+vars:
+  - config_file: ../config.yaml
+  - pipeline_name: pipelineB
+
+stages:
+  stage_2b:
+    cmd: python3 ../src/stage_2b.py --config=${config_file}
+    params:
+      - ${config_file}:
+          - base
+          - stage-1
+          - stage-2b
+    deps:
+      - ../src/logs.py
+      - ../output/stage1_output.txt
+      - ../output/stage2a_output.txt
+    outs:
+      - ../output/stage2b_output.txt
+
+  stage_3:
+    cmd: python3 ../src/stage_3.py --config=${config_file}
+    params:
+      - ${config_file}:
+          - base
+          - stage-3
+          - stage-2b
+    deps:
+      - ../src/logs.py
+      - ../output/stage1_output.txt
+      - ../output/stage2b_output.txt
+    outs:
+      - ../output/stage3_output.txt
