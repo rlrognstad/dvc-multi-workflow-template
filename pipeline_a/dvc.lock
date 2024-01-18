@@ -12,3 +12,39 @@ stages:
       hash: md5
       md5: ba6ff744ff89937f7e3f1963162fbe04
       size: 47
+  stage_2a:
+    cmd: python3 ../src/stage_2a.py --config=../config.yaml
+    deps:
+    - path: ../output/stage1_output.txt
+      hash: md5
+      md5: ba6ff744ff89937f7e3f1963162fbe04
+      size: 47
+    - path: ../src/logs.py
+      hash: md5
+      md5: 488b445760eec5a975b2ea2ac66d9eb2
+      size: 1170
+    outs:
+    - path: ../output/stage2_output.txt
+      hash: md5
+      md5: 15248d0eee453cbf1e7456378d75958f
+      size: 96
+  stage_3:
+    cmd: python3 ../src/stage_3.py --config=../config.yaml
+    deps:
+    - path: ../output/stage1_output.txt
+      hash: md5
+      md5: ba6ff744ff89937f7e3f1963162fbe04
+      size: 47
+    - path: ../output/stage2_output.txt
+      hash: md5
+      md5: 15248d0eee453cbf1e7456378d75958f
+      size: 96
+    - path: ../src/logs.py
+      hash: md5
+      md5: 488b445760eec5a975b2ea2ac66d9eb2
+      size: 1170
+    outs:
+    - path: ../output/stage3_output.txt
+      hash: md5
+      md5: e1ac71d05f385c5c577620f416856024
+      size: 145

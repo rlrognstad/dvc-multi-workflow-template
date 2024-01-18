@@ -7,3 +7,19 @@ stages:
       - ../src/logs.py
     outs:
       - ../output/stage1_output.txt
+  stage_2a:
+    cmd: python3 ../src/stage_2a.py --config=${config_file}
+    deps:
+      - ../src/logs.py
+      - ../output/stage1_output.txt
+    outs:
+      - ../output/stage2_output.txt
+
+  stage_3:
+    cmd: python3 ../src/stage_3.py --config=${config_file}
+    deps:
+      - ../src/logs.py
+      - ../output/stage1_output.txt
+      - ../output/stage2_output.txt
+    outs:
+      - ../output/stage3_output.txt
